@@ -1,4 +1,4 @@
-# Detetive-Pokemon
+# Minigames-Pokemon
 
 Projeto criado para a disciplina de Programação para Internet ministrada por Daniel Aguiar na turma de info3V <br>
 O grupo é constítuido por:
@@ -8,16 +8,7 @@ O grupo é constítuido por:
 - Gabriel Nascimento
 
 ## Sobre o projeto
-O projeto tem como objetivo praticarmos nossas habilidades com Flask, consultas a API e manipulação de dados usando CRUD. <br>
-Nossa missão é desenvolver um site que terá mecânica semelhante ao termo, porém ao invés de palavras do dicionário, você tem que adivinhar o nome do pokémon.
+O projeto tem como objetivo praticarmos nossas habilidades com os conteúdos abordados em programação para internet com física integrada. <br>
+Nossa missão é desenvolver um site que terá mecânicas de conteúdos abordados em física com uma temática de Pokémon, misturando conhecimentos e tornando o aprendizado mais interativo.
 
-## Tecnologias
-- Flask
-- SQLite
-- Python
-- Request
-- HTML
-- CSS
-- Git
-- Github
 
