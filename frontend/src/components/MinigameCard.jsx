@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import QuestionMarkImg from "../assets/QuestionMark.png"
 
 function MinigameCard({ minigame, onClick }) {
+    const navigate = useNavigate()
+    
+    const handleCardClick = () => {
+        navigate(`/game/${minigame.id}`)
+    }
+    
     return (
       <article
-        onClick={onClick}
+        onClick={handleCardClick}
         className="relative flex aspect-[248/353] w-full cursor-pointer flex-col overflow-hidden rounded-2xl mr-[21px] ml[21px] mb-[21px]"
       >
         <div className="relative flex-1 bg-[#7F7F7F]">
