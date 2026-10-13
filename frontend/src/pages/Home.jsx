@@ -16,7 +16,6 @@ function Home() {
                 />
             ))}
         </div>
-        <ProjectileGame />
       </div>
     </div>
   )
