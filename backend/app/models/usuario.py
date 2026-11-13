@@ -1,5 +1,6 @@
 from app.extensions import db
 from datetime import datetime, timezone
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class Usuario(db.Model):
     __tablename__ = 'usuario'
@@ -11,4 +12,9 @@ class Usuario(db.Model):
     senha_hash = db.Column(db.String(256), nullable=False)
     data_cadastro = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
 
+    def definir_senha(self, senha):
+        self.senha_hash = generate_password_hash(senha)
+
+    def verificar_senha(self, senha):
+        return check_password_hash(self.senha_hash, senha)
     
