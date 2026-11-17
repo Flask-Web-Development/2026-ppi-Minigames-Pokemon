@@ -1,11 +1,10 @@
 
 import { useState, useMemo, useEffect, useRef } from "react"
 import Header from "../../components/header"
+import caterpie from "../../assets/caterpie.png"
 
-// Configuração do alvo: "terrestre" ou "aereo"
 const TIPO_POKEMON = "terrestre"
 
-// Limites possíveis para a posição do Pokémon
 const FAIXA_TERRESTRE = [72, 88]
 const FAIXA_AEREA = [65, 88]
 
@@ -14,17 +13,14 @@ function ProjectileGame() {
     const [velocidade, setVelocidade] = useState(20)
     const [gravidade, setGravidade] = useState(10)
 
-    // Estados do lançamento
     const [lancamento, setLancamento] = useState(null)
     const [posicaoBola, setPosicaoBola] = useState(null)
     const [pokemonCapturado, setPokemonCapturado] = useState(false)
 
-    // Referências dos elementos da arena
     const arenaRef = useRef(null)
     const bolaRef = useRef(null)
     const pokemonRef = useRef(null)
 
-    // Posição do Pokémon definida uma única vez
     const [pokemonX] = useState(() => {
         const faixa = TIPO_POKEMON === "terrestre"
             ? FAIXA_TERRESTRE
@@ -33,14 +29,12 @@ function ProjectileGame() {
         return faixa[0] + Math.random() * (faixa[1] - faixa[0])
     })
 
-    // Parâmetros congelados durante o lançamento
     const parametros = lancamento || {
         angulo,
         velocidade,
         gravidade
     }
 
-    // Coordenadas da trajetória prevista
     const trajetoria = useMemo(() => {
         const pontos = []
         const theta = (parametros.angulo * Math.PI) / 180
@@ -51,7 +45,6 @@ function ProjectileGame() {
         const inicioX = 80
         const inicioY = 400
 
-        // A linha visual mostra somente uma parte da trajetória
         const duracao = 1.8
         const quantidadePontos = 35
 
@@ -73,7 +66,6 @@ function ProjectileGame() {
         return pontos.join(" ")
     }, [parametros])
 
-    // Animação e detecção de colisão
     useEffect(() => {
         if (!lancamento) return
 
@@ -85,7 +77,6 @@ function ProjectileGame() {
         const escalaX = 8
         const escalaY = 6
 
-        // Tempo necessário para retornar à altura inicial
         const duracao = lancamento.gravidade > 0
             ? (2 * lancamento.velocidade * Math.sin(theta)) / lancamento.gravidade
             : 0
@@ -101,7 +92,6 @@ function ProjectileGame() {
             const tempoDecorrido = (timestamp - inicioTempo) / 1000
             const t = Math.min(tempoDecorrido, duracao)
 
-            // Equações do lançamento oblíquo
             const x = lancamento.velocidade * Math.cos(theta) * t
             const y = lancamento.velocidade * Math.sin(theta) * t
                 - (lancamento.gravidade * t * t) / 2
@@ -109,10 +99,8 @@ function ProjectileGame() {
             const px = inicioX + x * escalaX
             const py = inicioY - y * escalaY
 
-            // Atualiza a posição da Pokébola
             setPosicaoBola({ x: px, y: py })
 
-            // Verifica colisão
             if (
                 !pokemonCapturado &&
                 arenaRef.current &&
@@ -122,11 +110,9 @@ function ProjectileGame() {
                 const arenaRect = arenaRef.current.getBoundingClientRect()
                 const pokemonRect = pokemonRef.current.getBoundingClientRect()
 
-                // Coordenadas da Pokébola em pixels relativos à arena
                 const bolaX = (px / 1000) * arenaRect.width
                 const bolaY = (py / 420) * arenaRect.height
 
-                // Centro do Pokémon
                 const pokemonXCentro =
                     pokemonRect.left - arenaRect.left + pokemonRect.width / 2
 
@@ -138,7 +124,6 @@ function ProjectileGame() {
                     bolaY - pokemonYCentro
                 )
 
-                // Raios aproximados dos elementos
                 const raioBola = Math.max(
                     bolaRef.current.offsetWidth,
                     bolaRef.current.offsetHeight
@@ -155,7 +140,6 @@ function ProjectileGame() {
                 }
             }
 
-            // Continua até retornar à altura inicial
             if (t < duracao) {
                 frameId = requestAnimationFrame(animar)
             }
@@ -171,7 +155,6 @@ function ProjectileGame() {
 
     }, [lancamento])
 
-    // Inicia o lançamento
     function lancarPokebola() {
         if (lancamento) return
 
@@ -184,7 +167,6 @@ function ProjectileGame() {
         })
     }
 
-    // Retorna a Pokébola ao ponto inicial
     function voltarPokebola() {
         setLancamento(null)
         setPosicaoBola(null)
@@ -235,7 +217,7 @@ function ProjectileGame() {
                         {!pokemonCapturado && (
                             <div
                                 ref={pokemonRef}
-                                className="absolute z-10 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border-2 border-white/70 bg-[#29395D] text-[8px] font-bold text-white sm:h-16 sm:w-16"
+                                className="absolute z-10 flex h-12 w-12 -translate-x-1/2 items-center justify-center text-[8px] font-bold text-white sm:h-16 sm:w-16"
                                 style={{
                                     left: `${pokemonX}%`,
                                     bottom: TIPO_POKEMON === "terrestre"
@@ -243,7 +225,7 @@ function ProjectileGame() {
                                         : "35%"
                                 }}
                                 title={`Pokémon ${TIPO_POKEMON}`}>
-                                pokemon
+                                <img className="h-full w-full object-contain" src={caterpie} alt={`Pokémon ${TIPO_POKEMON}`} />
                             </div>
                         )}
                         <button

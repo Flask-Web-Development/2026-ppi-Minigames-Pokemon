@@ -1,7 +1,7 @@
 const minigames = [
     {
         id: 1,
-        title: 'Energia Mecânica',
+        title: 'PotenVolt',
         description: 'Explore as transformações de energia.',
         pokemon: 'voltorb',
         color: '#003CFF',
@@ -10,7 +10,7 @@ const minigames = [
     },
     {
         id: 2,
-        title: "Arremesso Obliquo",
+        title: "ObliCatch",
         description: 'Arremesse sua pokébola e capture um pokémon',
         pokemon: 'None',
         color: '#FF0004',
@@ -19,20 +19,11 @@ const minigames = [
     },
     {
         id: 3,
-        title: "Portas lógicas",
+        title: "MagneGates",
         description: 'Aprenda eletrônica e uso de portas lógicas',
         pokemon: 'magnemite',
         color: '#BDBD27',
         details: "Use portas lógicas e eletricidade para conseguir chegar a um resultado pre-defenido ou monte seu circuito livremente!",
-        image: "..."
-    },
-    {
-        id: 4,
-        title: "Genérico teste",
-        description: 'gotcha catch em all',
-        pokemon: 'Rayquaza shiny 6 ivs perfeito',
-        color: '#F7FF00',
-        details: "ALIENIGINA AQUI NÃO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         image: "..."
     }
 ]
