@@ -1,6 +1,6 @@
 
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import Header from "../components/header"
 import PokeNewton from "../assets/PokeNewton.png"
@@ -12,6 +12,8 @@ function Cadastro() {
   const [senhaConfirm, setSenhaConfirm] = useState("")
   const [mostrarSenha, setMostrarSenha] = useState(false)
   const [mostrarSenhaConfirm, setMostrarSenhaConfirm] = useState(false)
+
+  const navigate = useNavigate()
 
   const [mensagem, setMensagem] = useState("")
   const [carregando, setCarregando] = useState(false)
@@ -54,6 +56,7 @@ function Cadastro() {
       setEmail("")
       setSenha("")
       setSenhaConfirm("")
+      navigate("/login")
 
     } catch (error) {
       setMensagem("Erro ao conectar com o servidor.")
@@ -169,7 +172,7 @@ function Cadastro() {
           </form>
 
           {mensagem && (
-            <p className="mt-4 text-center text-sm">
+            <p className="mt-4 text-center text-sm text-white">
               {mensagem}
             </p>
           )}
