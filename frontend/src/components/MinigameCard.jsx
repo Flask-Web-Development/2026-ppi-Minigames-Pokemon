@@ -11,7 +11,7 @@ function MinigameCard({ minigame, onClick }) {
     return (
       <article
         onClick={handleCardClick}
-        className="relative flex aspect-[248/353] w-full cursor-pointer flex-col overflow-hidden rounded-2xl mr-[21px] ml[21px] mb-[21px]"
+        className="relative flex aspect-[248/353] w-full cursor-pointer flex-col overflow-hidden rounded-2xl mr-[21px] ml-[21px] mb-[21px]"
       >
         <div className="relative flex-1 bg-[#7F7F7F]">
           {minigame.image && minigame.image !== '...' && (
@@ -43,12 +43,12 @@ function MinigameCard({ minigame, onClick }) {
         </div>
   
         <div
-          className="flex min-h-[120px] flex-col items-center justify-center p-4 text-center text-white"
+          className="flex min-h-[120px] flex-col items-center justify p-4 text-center text-white"
           style={{ backgroundColor: minigame.color }}
         >
-          <h2 className="text-base font-bold leading-tight">
+          <p className="text-base font-base leading-tight mt-[16px]" style={{ fontFamily: "'Inter', cursive", WebkitTextStroke: "1px #FFFFFF" }}>
             {minigame.title}
-          </h2>
+          </p>
           <p className="mt-2 text-xs font-medium opacity-90">
             {minigame.description}
           </p>

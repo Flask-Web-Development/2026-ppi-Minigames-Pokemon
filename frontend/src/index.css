@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/earlyaccess/nikukyu.css');
 @import "tailwindcss";
 
 :root {
@@ -27,6 +29,14 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+}
+
+.font-pixel {
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.font-nikukyu {
+  font-family: 'Nikukyu', cursive;
 }
 
 @media (prefers-color-scheme: dark) {
