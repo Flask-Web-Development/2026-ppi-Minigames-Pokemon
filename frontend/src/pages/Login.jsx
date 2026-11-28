@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 import Header from "../components/header"
 import PokeNewton from "../assets/PokeNewton.png"
+import API_URL from "../config/api"
 
 function Login() {
   const [email, setEmail] = useState("")
@@ -20,7 +21,7 @@ function Login() {
     setCarregando(true)
 
     try {
-      const resposta = await fetch("http://localhost:5000/auth/login", {
+      const resposta = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

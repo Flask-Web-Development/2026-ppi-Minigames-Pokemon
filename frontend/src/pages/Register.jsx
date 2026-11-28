@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 import Header from "../components/header"
 import PokeNewton from "../assets/PokeNewton.png"
+import API_URL from "../config/api"
 
 function Cadastro() {
   const [nome, setNome] = useState("")
@@ -30,7 +31,7 @@ function Cadastro() {
     setCarregando(true)
 
     try {
-      const resposta = await fetch("http://localhost:5000/auth/register", {
+      const resposta = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

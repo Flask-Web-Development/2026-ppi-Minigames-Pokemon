@@ -5,11 +5,12 @@ import EnergyGame from "./pages/games/EnergyGame"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
 import { useEffect } from "react"
+import API_URL from "./config/api"
 
 
 function App() {
   useEffect(() => {
-    fetch("http://localhost:5000/")
+    fetch(`${API_URL}/`)
       .then(res => res.json())
       .then(data => console.log("Flask:", data))
       .catch(error => console.error("Erro de conexão:", error))
