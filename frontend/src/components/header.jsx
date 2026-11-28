@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import logo from "../assets/pokeball.png"
 import { Link } from "react-router-dom"
+import API_URL from "../config/api"
 
 function Header() {
     const [usuario, setUsuario] = useState(null)
@@ -16,7 +17,7 @@ function Header() {
             }
 
             try {
-                const resposta = await fetch("http://localhost:5000/auth/me", {
+                const resposta = await fetch(`${API_URL}/auth/me`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
